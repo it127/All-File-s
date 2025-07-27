@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Download Center</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --background-dark: #1a1a2e;
+            --card-dark: #16213e;
+            --text-light: #f1f1f1;
+            --text-muted: #b8b8b8;
+            --success-color: #00b894;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .download-card {
+            background: var(--card-dark);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .file-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .file-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .file-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .file-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .file-details {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .detail-item {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+            min-width: 80px;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>File Download Center</h1>
+            <p class="subtitle">Download the resources you need</p>
+        </header>
+
+        <main>
+            <div class="download-grid">
+                <!-- File 1 -->
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="file-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Main File</h3>
+                            <p>Version 2.1</p>
+                        </div>
+                    </div>
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Format:</span>
+                            <span>ZIP Archive</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Size:</span>
+                            <span>26 KB</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Contents:</span>
+                            <span>26 Template Files</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Updated:</span>
+                            <span>June 26, 2025</span>
+                        </div>
+                    </div>
+                    <a href="project-templates.zip" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="file-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Main File</h3>
+                            <p>Version 2.1</p>
+                        </div>
+                    </div>
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Format:</span>
+                            <span>ZIP Archive</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Size:</span>
+                            <span>26 KB</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Contents:</span>
+                            <span>26 Template Files</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Updated:</span>
+                            <span>June 26, 2025</span>
+                        </div>
+                    </div>
+                    <a href="project-templates.zip" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="file-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>Main File</h3>
+                            <p>Version 2.1</p>
+                        </div>
+                    </div>
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Format:</span>
+                            <span>ZIP Archive</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Size:</span>
+                            <span>26 KB</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Contents:</span>
+                            <span>26 Template Files</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Updated:</span>
+                            <span>June 26, 2025</span>
+                        </div>
+                    </div>
+                    <a href="project-templates.zip" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+
+                <!-- File 2 -->
+                <div class="download-card">
+                    <div class="card-header">
+                        <div class="file-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <div class="file-info">
+                            <h3>File</h3>
+                            <p>Premium Edition</p>
+                        </div>
+                    </div>
+                    <div class="file-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Format:</span>
+                            <span>ZIP Archive</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Size:</span>
+                            <span>174 MB</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Contents:</span>
+                            <span>30+ Assets</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Updated:</span>
+                            <span>July 26, 2025</span>
+                        </div>
+                    </div>
+                    <a href="asset-collection.zip" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 File Download Center. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
